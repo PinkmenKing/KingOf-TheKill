@@ -1,0 +1,22 @@
+No.1 react-native run android simulator
+    question:fetch请求在android上报错： network request filed
+    code:fetch(url, {
+                method:method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=utf-8'},
+                body:JSON.stringify(params)
+            }).then((response) => response.json())
+            .then((responseJson) => {
+              if(responseJson.code == 1){
+                resolve(responseJson)
+              }else{
+                showShort(responseJson.msg);
+                resolve(false)
+              }
+            }).catch(err=>{
+                console.warn(err);
+                showShort('网络繁忙请稍后重试！');
+                resolve(false)
+            })
+      Solve：Gmotion模拟器版本的问题，一直运行在android6.0上，每次修改文件都必须要重新编译打包安装，切换到低版本的模拟器上后问题解决，fetch请求正常
